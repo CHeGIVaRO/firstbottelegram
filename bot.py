@@ -8,7 +8,7 @@ def greet_user(bot, update):
     update.message.reply_text(text)
 
 def main():
-    mybot = Updater("825666820:AAH1tFZxQv-iCkscAZLbP1Qimlk9k7TLhBE", request_kwargs=PROXY)
+    mybot = Updater("", request_kwargs=PROXY)
 
     dp = mybot.dispatcher
     dp.add_handler(CommandHandler("start", greet_user))

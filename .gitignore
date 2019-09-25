@@ -2,3 +2,7 @@
 setting.py
 /env/
 __pycache__/
+downloads/
+images/
+.idea/
+.vscode/

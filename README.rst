@@ -1,14 +1,8 @@
-Flask
+CHEG_TEST_BOT
 =====
 
-Flask is a lightweight `WSGI`_ web application framework.
+Это телеграм бот, он немногое умеет. 
+Он умеет определять созвездие планеты, присылать котиков и сохранять новых если вы отправите ему новых, и немногое другое
 
-
-Installing
-----------
-
-Install and update using `pip`_:
-..code-block:: text
-    pip install -U Flask
-
-.. _WSGI: https://wsgi.readthedocs.io
+It's a telegram bot, it doesn't know much. 
+He is able to determine the constellation of the planet, send seals and save new if you send him new, and a little more

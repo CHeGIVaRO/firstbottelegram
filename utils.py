@@ -3,6 +3,7 @@ from telegram import ReplyKeyboardMarkup, KeyboardButton
 from random import choice
 import setting
 import logging
+from clarifai.rest import ClarifaiApp
 
 def get_user_emo(user_data):
     if 'emo' in user_data:
@@ -16,6 +17,21 @@ def get_keyboard():
     location_button = KeyboardButton('Прислать координаты', request_location = True)
     my_keyboard = ReplyKeyboardMarkup([
                                         ['Прислать котика', 'Сменить аватарку'],
-                                        [contact_button, location_button]
+                                        [contact_button, location_button],
+                                        ['Заполнить анкету']
                                         ], resize_keyboard=True)
     return my_keyboard
+
+def is_cat(file_name):
+    image_has_cat = False
+    app = ClarifaiApp(api_key=setting.CLARIFAI_API_KEY)
+    model = app.public_models.general_model
+    response = model.predict_by_filename(file_name, max_concepts=5)
+    if response['status']['code'] == 10000:
+        for concept in response['outputs'][0]['data']['concepts']:
+            if concept['name'] == 'cat':
+                image_has_cat = True
+    return image_has_cat
+
+if __name__ == "__main__":
+    print(is_cat('images/index1.jpeg'))
